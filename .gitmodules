@@ -1,0 +1,6 @@
+[submodule "lib/godot-draggable-camera-2d"]
+	path = lib/godot-draggable-camera-2d
+	url = https://github.com/feyrkh/godot-draggable-camera-2d.git
+[submodule "lib/godot-save-system"]
+	path = lib/godot-save-system
+	url = https://github.com/feyrkh/godot-save-system.git

@@ -1,0 +1,27 @@
+{
+	"enemy_name": "Slime",
+	"hp": 50,
+	"max_hp": 50,
+	"attack": 8,
+	"defense": 3,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "A flurry of attacks",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 8, "description": "Attack"},
+				{"action_type": 0, "target_type": 0, "power": 8, "description": "Attack"},
+				{"action_type": 0, "target_type": 0, "power": 8, "description": "Attack"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "A cautious approach",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Defend"},
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Defend"},
+				{"action_type": 0, "target_type": 0, "power": 8, "description": "Attack"}
+			]
+		}
+	]
+}

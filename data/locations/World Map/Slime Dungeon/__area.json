@@ -1,0 +1,5 @@
+{
+	"display_name": "Slime Dungeon",
+	"is_discovered": true,
+	"potential_enemies": ["res://data/enemies/slime.json"]
+}

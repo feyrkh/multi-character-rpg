@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cminhmhrnymnx"]
+
+[ext_resource type="Script" uid="uid://b4jmpkdb2d45g" path="res://scripts/ui/LocationView.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://cpeh4i81rxr5m" path="res://lib/godot-draggable-camera-2d/DraggableCamera2D.gd" id="2_camera"]
+
+[node name="LocationView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 6
+
+[node name="Camera" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_camera")
+min_zoom = 0.5
+max_zoom = 2.0

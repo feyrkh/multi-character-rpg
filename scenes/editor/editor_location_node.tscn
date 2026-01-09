@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxe3yqk4tfrxm"]
+
+[ext_resource type="Script" path="res://scripts/editor/EditorLocationNode.gd" id="1_node"]
+
+[node name="EditorLocationNode" type="Control"]
+custom_minimum_size = Vector2(80, 60)
+script = ExtResource("1_node")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="IconRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_font_sizes/font_size = 11
+text = "Location"
+horizontal_alignment = 1

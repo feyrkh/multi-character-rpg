@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqk8m3xfn2wvy"]
+
+[ext_resource type="Script" path="res://scripts/ui/CombatView.gd" id="1_script"]
+
+[node name="CombatView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BattleArea" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="EnemyPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/BattleArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BattleArea/EnemyPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="EnemyNameLabel" type="Label" parent="MarginContainer/VBoxContainer/BattleArea/EnemyPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Enemy"
+horizontal_alignment = 1
+
+[node name="EnemyHPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/BattleArea/EnemyPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="EnemyHPLabel" type="Label" parent="MarginContainer/VBoxContainer/BattleArea/EnemyPanel/VBoxContainer"]
+layout_mode = 2
+text = "HP: 100/100"
+horizontal_alignment = 1
+
+[node name="CombatLogPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/BattleArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CombatLog" type="RichTextLabel" parent="MarginContainer/VBoxContainer/BattleArea/CombatLogPanel"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 14
+scroll_following = true
+
+[node name="PartyPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/BattleArea"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BattleArea/PartyPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PartyLabel" type="Label" parent="MarginContainer/VBoxContainer/BattleArea/PartyPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Party"
+horizontal_alignment = 1
+
+[node name="PartyHPBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/BattleArea/PartyPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="PartyHPLabel" type="Label" parent="MarginContainer/VBoxContainer/BattleArea/PartyPanel/VBoxContainer"]
+layout_mode = 2
+text = "HP: 100/100"
+horizontal_alignment = 1
+
+[node name="CommandBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TurnLabel" type="Label" parent="MarginContainer/VBoxContainer/CommandBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Turn 1"
+
+[node name="FormSelector" type="OptionButton" parent="MarginContainer/VBoxContainer/CommandBar"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="AttackButton" type="Button" parent="MarginContainer/VBoxContainer/CommandBar"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Execute"
+
+[node name="FleeButton" type="Button" parent="MarginContainer/VBoxContainer/CommandBar"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "Flee"

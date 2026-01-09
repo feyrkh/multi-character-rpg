@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://6bysu1swwqxo"]
+
+[ext_resource type="Script" uid="uid://caerffegnmpch" path="res://scripts/ui/GameView.gd" id="1_script"]
+[ext_resource type="PackedScene" uid="uid://cminhmhrnymnx" path="res://scenes/location/location_view.tscn" id="2_location_view"]
+[ext_resource type="PackedScene" path="res://scenes/ui/move_confirmation.tscn" id="3_move_confirmation"]
+[ext_resource type="PackedScene" uid="uid://dqk8m3xfn2wvy" path="res://scenes/ui/combat_view.tscn" id="4_combat_view"]
+
+[node name="GameView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="LocationView" parent="." instance=ExtResource("2_location_view")]
+layout_mode = 1
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="CalendarPanel" type="PanelContainer" parent="HUD/TopBar"]
+layout_mode = 2
+
+[node name="CalendarLabel" type="Label" parent="HUD/TopBar/CalendarPanel"]
+layout_mode = 2
+text = "Month 1, Day 1"
+
+[node name="Spacer" type="Control" parent="HUD/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuButton" type="Button" parent="HUD/TopBar"]
+layout_mode = 2
+text = "Menu"
+
+[node name="BottomBar" type="HBoxContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="ExploreButton" type="Button" parent="HUD/BottomBar"]
+visible = false
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Explore"
+
+[node name="MoveConfirmation" parent="." instance=ExtResource("3_move_confirmation")]
+layout_mode = 1
+
+[node name="CombatView" parent="." instance=ExtResource("4_combat_view")]
+visible = false
+layout_mode = 1

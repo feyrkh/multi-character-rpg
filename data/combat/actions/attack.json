@@ -1,0 +1,7 @@
+{
+	"id": "attack",
+	"action_type": 0,
+	"target_type": 0,
+	"power": 10,
+	"description": "A basic physical attack"
+}

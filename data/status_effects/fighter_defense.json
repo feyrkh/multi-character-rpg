@@ -1,0 +1,13 @@
+{
+	"name": "Defensive Stance",
+	"description": "15% damage reduction per stack, resets at round end",
+	"effect_type": 0,
+	"defense_type": 0,
+	"strength": 15.0,
+	"stacks": 1,
+	"max_stacks": 10,
+	"decay_type": 1,
+	"duration_rounds": -1,
+	"cleansable": false,
+	"triggers": ["CONTINUOUS"]
+}

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://6bysu1swwqxo"]
+[gd_scene load_steps=6 format=3 uid="uid://6bysu1swwqxo"]
 
 [ext_resource type="Script" uid="uid://caerffegnmpch" path="res://scripts/ui/GameView.gd" id="1_script"]
 [ext_resource type="PackedScene" uid="uid://cminhmhrnymnx" path="res://scenes/location/location_view.tscn" id="2_location_view"]
 [ext_resource type="PackedScene" path="res://scenes/ui/move_confirmation.tscn" id="3_move_confirmation"]
 [ext_resource type="PackedScene" uid="uid://dqk8m3xfn2wvy" path="res://scenes/ui/combat_view.tscn" id="4_combat_view"]
+[ext_resource type="PackedScene" uid="uid://c1combat_forms_view" path="res://scenes/ui/combat_forms/combat_forms_view.tscn" id="5_combat_forms_view"]
 
 [node name="GameView" type="Control"]
 layout_mode = 3
@@ -45,6 +46,10 @@ text = "Month 1, Day 1"
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="FormsButton" type="Button" parent="HUD/TopBar"]
+layout_mode = 2
+text = "Forms"
+
 [node name="MenuButton" type="Button" parent="HUD/TopBar"]
 layout_mode = 2
 text = "Menu"
@@ -70,5 +75,9 @@ text = "Explore"
 layout_mode = 1
 
 [node name="CombatView" parent="." instance=ExtResource("4_combat_view")]
+visible = false
+layout_mode = 1
+
+[node name="CombatFormsView" parent="." instance=ExtResource("5_combat_forms_view")]
 visible = false
 layout_mode = 1

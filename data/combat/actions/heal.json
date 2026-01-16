@@ -1,0 +1,8 @@
+{
+	"action_type": 2,
+	"target_type": 4,
+	"power": 15,
+	"skill_id": "heal",
+	"description": "Restore HP to allies",
+	"icon_path": ""
+}

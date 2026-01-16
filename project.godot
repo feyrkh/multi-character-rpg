@@ -21,6 +21,7 @@ GameManager="*res://scripts/autoload/GameManager.gd"
 TimeMgr="*res://scripts/autoload/TimeMgr.gd"
 LocationMgr="*res://scripts/autoload/LocationMgr.gd"
 CombatMgr="*res://scripts/autoload/CombatMgr.gd"
+StatusEffectMgr="*res://scripts/autoload/StatusEffectMgr.gd"
 
 [editor_plugins]
 

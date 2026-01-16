@@ -7,13 +7,16 @@ signal menu_requested()
 @onready var location_view = $LocationView
 @onready var calendar_label: Label = $HUD/TopBar/CalendarPanel/CalendarLabel
 @onready var menu_button: Button = $HUD/TopBar/MenuButton
+@onready var forms_button: Button = $HUD/TopBar/FormsButton
 @onready var explore_button: Button = $HUD/BottomBar/ExploreButton
 @onready var combat_view = $CombatView
+@onready var combat_forms_view = $CombatFormsView
 
 var _current_party: Party
 
 func _ready() -> void:
 	menu_button.pressed.connect(_on_menu_pressed)
+	forms_button.pressed.connect(_on_forms_pressed)
 	explore_button.pressed.connect(_on_explore_pressed)
 	location_view.location_clicked.connect(_on_location_clicked)
 	location_view.exit_clicked.connect(_on_exit_clicked)
@@ -140,6 +143,11 @@ func _update_calendar() -> void:
 func _on_menu_pressed() -> void:
 	menu_requested.emit()
 
+func _on_forms_pressed() -> void:
+	if _current_party == null:
+		return
+	combat_forms_view.open(_current_party)
+
 # --- Explore and Combat ---
 
 func _update_explore_button() -> void:
@@ -162,18 +170,34 @@ func _on_explore_pressed() -> void:
 	if current_loc == null or current_loc.potential_enemies.is_empty():
 		return
 
-	# Pick a random enemy from the potential enemies
-	var enemy_path = current_loc.potential_enemies[randi() % current_loc.potential_enemies.size()]
-	var enemy = Enemy.load_from_file(enemy_path)
+	# Pick a random encounter from the potential encounters
+	var encounter_data = current_loc.potential_enemies[randi() % current_loc.potential_enemies.size()]
 
-	if enemy == null:
-		push_error("Failed to load enemy: " + enemy_path)
+	# Normalize to array of enemy paths
+	var enemy_paths = []
+	if encounter_data is String:
+		# Old format: array of strings, each is a separate encounter
+		enemy_paths = [encounter_data]
+	elif encounter_data is Array:
+		# New format: array of arrays, inner array is one encounter with multiple enemies
+		enemy_paths = encounter_data
+	else:
+		push_error("Invalid encounter data format")
 		return
+
+	# Load all enemies for this encounter
+	var enemies = []
+	for path in enemy_paths:
+		var enemy = Enemy.load_from_file(path)
+		if enemy == null:
+			push_error("Failed to load enemy: " + path)
+			return
+		enemies.append(enemy)
 
 	# Start combat
 	location_view.hide()
 	explore_button.hide()
-	combat_view.start_combat(_current_party, enemy)
+	combat_view.start_combat(_current_party, enemies)
 
 func _on_combat_finished(report: CombatReport) -> void:
 	# Show the map again

@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4known_action_item"]
+
+[ext_resource type="Script" path="res://scripts/ui/KnownActionItem.gd" id="1_script"]
+
+[node name="KnownActionItem" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 90)
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="IconRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+mouse_filter = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 11
+text = "Action"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PowerLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 9
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+text = "Pow: 10"
+horizontal_alignment = 1

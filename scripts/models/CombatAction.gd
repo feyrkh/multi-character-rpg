@@ -12,6 +12,7 @@ var power: int = 10
 var skill_id: String = ""  # For SKILL type
 var item_id: String = ""   # For ITEM type
 var description: String = ""
+var icon_path: String = ""  # Path to action icon texture
 
 func _init(p_type: ActionType = ActionType.ATTACK, p_power: int = 10) -> void:
 	action_type = p_type
@@ -30,16 +31,17 @@ func get_action_name() -> String:
 	return "Unknown"
 
 func to_dict() -> Dictionary:
-	return {
-		"action_type": action_type,
-		"target_type": target_type,
-		"power": power,
-		"skill_id": skill_id,
-		"item_id": item_id,
-		"description": description
-	}
+	var result = super.to_dict()
+	result["action_type"] = action_type
+	result["target_type"] = target_type
+	result["power"] = power
+	result["skill_id"] = skill_id
+	result["item_id"] = item_id
+	result["description"] = description
+	result["icon_path"] = icon_path
+	return result
 
-static func from_dict(dict: Dictionary) -> CombatAction:
+static func from_dict(dict: Dictionary) -> RegisteredObject:
 	var action = CombatAction.new()
 	action.action_type = dict.get("action_type", ActionType.ATTACK)
 	action.target_type = dict.get("target_type", TargetType.ENEMY)
@@ -47,4 +49,5 @@ static func from_dict(dict: Dictionary) -> CombatAction:
 	action.skill_id = dict.get("skill_id", "")
 	action.item_id = dict.get("item_id", "")
 	action.description = dict.get("description", "")
-	return action
+	action.icon_path = dict.get("icon_path", "")
+	return _resolve_canonical(action, dict)

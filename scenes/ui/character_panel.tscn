@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy8k3xfn2wdea"]
+
+[ext_resource type="Script" path="res://scripts/ui/CharacterPanel.gd" id="1_script"]
+
+[node name="CharacterPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 100)
+script = ExtResource("1_script")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Character Name"
+horizontal_alignment = 1
+
+[node name="SelectButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Select"
+
+[node name="HPBar" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+value = 100.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "HP: 100/100"
+horizontal_alignment = 1
+
+[node name="StatusEffectsContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="StatusEffectsLabel" type="Label" parent="VBoxContainer/StatusEffectsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Status:"
+
+[node name="StatusEffects" type="Label" parent="VBoxContainer/StatusEffectsContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "None"
+
+[node name="FormLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Form: Not Selected"
+horizontal_alignment = 1

@@ -12,7 +12,10 @@ var background_path: String = ""
 var is_discovered: bool = false
 var position: Vector2 = Vector2.ZERO  # Position on map for rendering
 var is_instant_travel: bool = true  # If false, must walk between nodes
-var potential_enemies: Array[String] = []  # Enemy file paths for combat encounters
+# Potential enemy encounters. Can be:
+# - Array of Strings: ["enemy1.json", "enemy2.json"] (backward compat - each is separate encounter)
+# - Array of Arrays: [["enemy1.json", "enemy2.json"], ["enemy3.json"]] (multi-enemy encounters)
+var potential_enemies: Array = []
 
 func _init(p_id: String = "", p_name: String = "") -> void:
 	id = p_id

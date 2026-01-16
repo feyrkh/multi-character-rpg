@@ -1,0 +1,13 @@
+{
+	"name": "Regeneration",
+	"description": "Restores 5 HP at the start of each round",
+	"effect_type": 2,
+	"heal_type": 0,
+	"strength": 5.0,
+	"stacks": 1,
+	"max_stacks": 3,
+	"decay_type": 3,
+	"duration_rounds": 3,
+	"cleansable": true,
+	"triggers": ["ROUND_START"]
+}

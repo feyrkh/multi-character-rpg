@@ -1,0 +1,13 @@
+{
+	"name": "Protective Aura",
+	"description": "Flat 20% damage reduction, decreases by 1 stack per round",
+	"effect_type": 0,
+	"defense_type": 1,
+	"strength": 20.0,
+	"stacks": 1,
+	"max_stacks": 10,
+	"decay_type": 2,
+	"duration_rounds": -1,
+	"cleansable": false,
+	"triggers": ["CONTINUOUS"]
+}

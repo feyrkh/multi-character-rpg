@@ -2,16 +2,78 @@
 # Manages characters, parties, and game state persistence
 extends Node
 
-signal active_party_changed(party: Party)
-signal character_created(character: PlayableCharacter)
-signal character_updated(character: PlayableCharacter)
-signal party_created(party: Party)
-signal party_deleted(party: Party)
+signal active_party_changed(party)
+signal character_created(character)
+signal character_updated(character)
+signal party_created(party)
+signal party_deleted(party)
 
-var active_party: Party = null
+var active_party = null  # type: Party
+
+const COMBAT_ACTIONS_PATH = "res://data/combat/actions/"
 
 func _ready() -> void:
-	pass
+	_load_combat_actions()
+
+# --- Combat Action Loading ---
+
+func _load_combat_actions() -> void:
+	var dir = DirAccess.open(COMBAT_ACTIONS_PATH)
+	if dir == null:
+		push_warning("Cannot open combat actions directory: " + COMBAT_ACTIONS_PATH)
+		return
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	var count = 0
+	while file_name != "":
+		if not dir.current_is_dir() and file_name.ends_with(".json"):
+			_load_action_file(COMBAT_ACTIONS_PATH + file_name)
+			count += 1
+		file_name = dir.get_next()
+	dir.list_dir_end()
+
+	print("GameManager: Loaded %d combat actions" % count)
+
+func _load_action_file(path: String) -> void:
+	var file = FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		push_error("Cannot open action file: " + path)
+		return
+
+	var json_string = file.get_as_text()
+	file.close()
+
+	var json = JSON.new()
+	if json.parse(json_string) != OK:
+		push_error("Failed to parse action JSON: " + path)
+		return
+
+	var data = json.data
+	if not data is Dictionary:
+		push_error("Invalid action JSON format: " + path)
+		return
+
+	# Use filename (without .json) as the ID
+	var action_id = path.get_file().get_basename()
+	data["__id__"] = action_id
+	data["__class__"] = "CombatAction"
+
+	# This will register the action with InstanceRegistry via _resolve_canonical
+	CombatAction.from_dict(data)
+
+func get_combat_action(id: String) -> CombatAction:
+	var registry = InstanceRegistry.get_registry()
+	return registry.get_instance("CombatAction", id)
+
+func get_all_combat_actions() -> Array[CombatAction]:
+	var registry = InstanceRegistry.get_registry()
+	var instances = registry.get_all_instances("CombatAction")
+	var result: Array[CombatAction] = []
+	for inst in instances:
+		if inst is CombatAction:
+			result.append(inst)
+	return result
 
 # --- Character Management ---
 
@@ -165,3 +227,5 @@ func new_game() -> void:
 	var registry = InstanceRegistry.get_registry()
 	registry.clear_all()
 	active_party = null
+	# Reload combat actions since clear_all() wiped them
+	_load_combat_actions()

@@ -1,0 +1,12 @@
+{
+	"name": "Vampire Aura",
+	"description": "Heal for 25% of damage dealt",
+	"effect_type": 3,
+	"strength": 25.0,
+	"stacks": 1,
+	"max_stacks": 1,
+	"decay_type": 2,
+	"duration_rounds": -1,
+	"cleansable": true,
+	"triggers": ["WHEN_ATTACKING"]
+}

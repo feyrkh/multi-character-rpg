@@ -1,0 +1,12 @@
+{
+	"name": "Thorns",
+	"description": "Reflects 15% of incoming damage per stack",
+	"effect_type": 3,
+	"strength": 15.0,
+	"stacks": 1,
+	"max_stacks": 5,
+	"decay_type": 2,
+	"duration_rounds": -1,
+	"cleansable": true,
+	"triggers": ["WHEN_ATTACKED", "ROUND_END"]
+}

@@ -7,6 +7,8 @@ func before_each():
 	_registry.clear_all()
 	GameManager.new_game()
 	TimeMgr.reset()
+	# Set combat speed to INSTANT for tests
+	CombatMgr.set_combat_speed(CombatMgr.CombatSpeed.INSTANT)
 	# Reset combat state
 	if CombatMgr.is_in_combat():
 		CombatMgr.flee()
@@ -105,7 +107,7 @@ func test_execute_turn():
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 10))
 	CombatMgr.select_form(form)
 
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 	assert_eq(CombatMgr.current_turn, 1)
 	assert_gt(CombatMgr.total_damage_dealt, 0)
 
@@ -119,7 +121,7 @@ func test_execute_turn_deals_damage():
 	var form = CombatForm.new("Attack Form")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 10))
 	CombatMgr.select_form(form)
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 
 	assert_lt(CombatMgr.enemy_hp, initial_enemy_hp)
 
@@ -133,7 +135,7 @@ func test_execute_turn_enemy_attacks():
 	var form = CombatForm.new("Attack Form")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))  # Won't kill enemy
 	CombatMgr.select_form(form)
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 
 	# If combat continues, enemy should have attacked
 	if CombatMgr.is_in_combat():
@@ -149,7 +151,7 @@ func test_win_combat():
 	var form = CombatForm.new("Power Attack")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 20))
 	CombatMgr.select_form(form)
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 
 	assert_false(CombatMgr.is_in_combat())
 
@@ -172,7 +174,7 @@ func test_flee_returns_report():
 	var form = CombatForm.new("Attack")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))
 	CombatMgr.select_form(form)
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 
 	if CombatMgr.is_in_combat():
 		var report = CombatMgr.flee()
@@ -188,7 +190,8 @@ func test_get_party_hp_percent():
 
 	assert_eq(CombatMgr.get_party_hp_percent(), 1.0)
 
-	CombatMgr.party_hp = 50
+	# Modify underlying combatant HP instead of computed property
+	CombatMgr.party_combatants[0].combatant_state.current_hp = 50
 	assert_eq(CombatMgr.get_party_hp_percent(), 0.5)
 
 func test_get_enemy_hp_percent():
@@ -198,7 +201,8 @@ func test_get_enemy_hp_percent():
 
 	assert_eq(CombatMgr.get_enemy_hp_percent(), 1.0)
 
-	CombatMgr.enemy_hp = 25
+	# Modify underlying combatant HP instead of computed property
+	CombatMgr.enemy_combatants[0].combatant_state.current_hp = 25
 	assert_eq(CombatMgr.get_enemy_hp_percent(), 0.5)
 
 # --- Query Tests ---
@@ -213,7 +217,7 @@ func test_get_current_turn():
 	var form = CombatForm.new("Attack")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))
 	CombatMgr.select_form(form)
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 
 	if CombatMgr.is_in_combat():
 		assert_eq(CombatMgr.get_current_turn(), 1)
@@ -283,7 +287,7 @@ func test_combat_adds_to_action_log():
 	var form = CombatForm.new("Kill")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 50))
 	CombatMgr.select_form(form)
-	CombatMgr.execute_turn()
+	await CombatMgr.execute_turn()
 
 	# Combat should have ended and added a log entry
 	assert_gt(char.action_log.size(), initial_log_size)

@@ -39,12 +39,66 @@ func _setup_new_game() -> void:
 	TimeMgr.reset()
 	LocationMgr.reset()
 
-	# Create starting character and party
-	var hero = GameManager.create_character("Hero")
-	hero.days_remaining = 30
+	# Create Fighter character
+	var fighter = GameManager.create_character("Fighter")
+	fighter.days_remaining = 30
+	fighter.stats.hp = 120
+	fighter.stats.max_hp = 120
+	fighter.stats.attack = 15
+	fighter.stats.defense = 8
+
+	# Fighter form: All-Out Attack (3x attack)
+	var all_out_attack = CombatForm.new("All-Out Attack")
+	all_out_attack.description = "Unleash a barrage of attacks"
+	var attack_action = GameManager.get_combat_action("attack")
+	if attack_action:
+		for i in range(3):
+			all_out_attack.add_action(attack_action)
+	fighter.combat_forms.append(all_out_attack)
+
+	# Fighter form: Defensive Posture (1x defend self, 2x defend party)
+	var defensive_posture = CombatForm.new("Defensive Posture")
+	defensive_posture.description = "Protect yourself and allies"
+	var defend_action = GameManager.get_combat_action("defend")
+	var defend_all_action = GameManager.get_combat_action("defend_all")
+	if defend_action and defend_all_action:
+		defensive_posture.add_action(defend_action)  # Defend self
+		defensive_posture.add_action(defend_all_action)  # Defend party
+		defensive_posture.add_action(defend_all_action)  # Defend party
+	fighter.combat_forms.append(defensive_posture)
+
+	# Create Cleric character
+	var cleric = GameManager.create_character("Cleric")
+	cleric.days_remaining = 30
+	cleric.stats.hp = 100
+	cleric.stats.max_hp = 100
+	cleric.stats.attack = 8
+	cleric.stats.defense = 12
+
+	# Add heal and defend_all to cleric's known actions
+	cleric.known_actions.append(KnownCombatAction.new("heal"))
+	cleric.known_actions.append(KnownCombatAction.new("defend_all"))
+
+	# Cleric form: Protective Aura (3x defend all)
+	var protective_aura = CombatForm.new("Protective Aura")
+	protective_aura.description = "Shield allies with divine power"
+	if defend_all_action:
+		for i in range(3):
+			protective_aura.add_action(defend_all_action)
+	cleric.combat_forms.append(protective_aura)
+
+	# Cleric form: Restoration (1x defend all, 2x heal)
+	var restoration = CombatForm.new("Restoration")
+	restoration.description = "Heal and protect allies"
+	var heal_action = GameManager.get_combat_action("heal")
+	if defend_all_action and heal_action:
+		restoration.add_action(defend_all_action)
+		restoration.add_action(heal_action)
+		restoration.add_action(heal_action)
+	cleric.combat_forms.append(restoration)
 
 	var starting_location = "World Map\\Small Village\\"
-	var party = GameManager.create_party("Party", [hero], starting_location)
+	var party = GameManager.create_party("Party", [fighter, cleric], starting_location)
 
 	# Start the game
 	game_view.start_game(party, starting_location)

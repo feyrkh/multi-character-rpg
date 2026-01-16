@@ -1,0 +1,13 @@
+{
+	"name": "Poison",
+	"description": "Takes 3 damage at the start of each round",
+	"effect_type": 1,
+	"damage_type": 0,
+	"strength": 3.0,
+	"stacks": 1,
+	"max_stacks": 5,
+	"decay_type": 3,
+	"duration_rounds": 3,
+	"cleansable": true,
+	"triggers": ["ROUND_START"]
+}

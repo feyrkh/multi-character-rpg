@@ -1,7 +1,7 @@
 {
-	"id": "defend",
 	"action_type": 1,
 	"target_type": 1,
 	"power": 0,
-	"description": "Take a defensive stance to reduce incoming damage"
+	"description": "Take a defensive stance to reduce incoming damage",
+	"icon_path": ""
 }

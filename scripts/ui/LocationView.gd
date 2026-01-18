@@ -5,6 +5,7 @@ extends Control
 signal location_clicked(location_id: String)
 signal exit_clicked(parent_area_id: String)
 signal enter_requested(location_id: String)
+signal explore_requested(location_id: String)
 
 const LocationNodeScene = preload("res://scenes/location/location_node.tscn")
 
@@ -84,6 +85,7 @@ func _spawn_location_nodes() -> void:
 		node_instance.position = location.position - node_instance.size / 2
 		node_instance.clicked.connect(_on_location_node_clicked)
 		node_instance.enter_requested.connect(_on_enter_requested)
+		node_instance.explore_requested.connect(_on_explore_requested)
 
 		_location_nodes[location.id] = node_instance
 
@@ -118,6 +120,9 @@ func _on_exit_node_clicked(_location_id: String) -> void:
 
 func _on_enter_requested(location_id: String) -> void:
 	enter_requested.emit(location_id)
+
+func _on_explore_requested(location_id: String) -> void:
+	explore_requested.emit(location_id)
 
 func _draw_path_lines() -> void:
 	var drawn_links: Dictionary = {}
@@ -178,7 +183,13 @@ func _update_current_location_marker() -> void:
 			var prefix = location_id + "\\"
 			has_interior = _has_locations_with_prefix(prefix)
 
-		node.set_current(is_current, has_interior)
+		# Check if this location has events
+		var has_events = false
+		var location = LocationMgr.get_location(location_id)
+		if location and location.potential_events.size() > 0:
+			has_events = true
+
+		node.set_current(is_current, has_interior, has_events, _is_instant_travel)
 
 func _has_locations_with_prefix(prefix: String) -> bool:
 	# Check if any registered location starts with this prefix

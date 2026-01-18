@@ -1,0 +1,27 @@
+{
+	"enemy_name": "Mimic",
+	"hp": 50,
+	"max_hp": 50,
+	"attack": 14,
+	"defense": 6,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Snapping jaws",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Bite"},
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Bite"},
+				{"action_type": 0, "target_type": 0, "power": 16, "description": "Chomp"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Protective shell",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Close Lid"},
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Harden"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Lash Out"}
+			]
+		}
+	]
+}

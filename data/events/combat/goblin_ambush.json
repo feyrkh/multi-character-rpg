@@ -1,0 +1,9 @@
+{
+	"event_type": "combat",
+	"event_id": "goblin_ambush",
+	"enemies": [
+		"res://data/enemies/goblin.json",
+		"res://data/enemies/goblin.json",
+		"res://data/enemies/goblin.json"
+	]
+}

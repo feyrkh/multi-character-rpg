@@ -1,0 +1,30 @@
+{
+	"event_type": "composite",
+	"event_id": "rescue_quest",
+	"steps": [
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Villager: Please, help! Goblins have taken my daughter!\nVillager: They dragged her toward the old cave to the east!\nVillager: Please hurry!",
+			"right_portrait": "res://assets/portraits/worried_villager.png"
+		},
+		{
+			"event_type": "combat",
+			"enemies": [
+				"res://data/enemies/goblin.json",
+				"res://data/enemies/goblin.json",
+				"res://data/enemies/goblin_shaman.json"
+			]
+		},
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Villager's Daughter: Thank you for saving me!\nVillager's Daughter: My father will want to reward you.",
+			"right_portrait": "res://assets/portraits/rescued_girl.png"
+		},
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Villager: You saved her! I cannot thank you enough!\nVillager: Please, take this. It's a family heirloom.\nVillager: You are always welcome in our home.",
+			"right_portrait": "res://assets/portraits/grateful_villager.png",
+			"central_overlay": "res://assets/overlays/silver_pendant.png"
+		}
+	]
+}

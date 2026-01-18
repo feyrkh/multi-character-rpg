@@ -4,5 +4,9 @@
 	"position": {
 		"x": -18.0,
 		"y": -135.0
-	}
+	},
+	"potential_events": [
+		"res://data/events/discovery/unlock_forest_paths.json",
+		"res://data/events/composite/bandit_ambush_complete.json"
+	]
 }

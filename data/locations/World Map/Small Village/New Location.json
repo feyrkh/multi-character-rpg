@@ -1,8 +1,12 @@
 {
-	"display_name": "New Location",
+	"display_name": "Village Square",
 	"is_discovered": true,
 	"position": {
 		"x": -20.0,
 		"y": 36.0
-	}
+	},
+	"potential_events": [
+		"res://data/events/composite/rescue_quest.json",
+		"res://data/events/discovery/find_bandit_hideout.json"
+	]
 }

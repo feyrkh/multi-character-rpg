@@ -1,0 +1,11 @@
+{
+	"display_name": "Bandit Hideout",
+	"is_discovered": false,
+	"position": {
+		"x": 100.0,
+		"y": 150.0
+	},
+	"potential_events": [
+		"res://data/events/composite/bandit_ambush_complete.json"
+	]
+}

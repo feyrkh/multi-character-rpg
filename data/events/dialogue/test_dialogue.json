@@ -1,0 +1,5 @@
+{
+	"event_type": "dialogue",
+	"event_id": "test_dialogue",
+	"dialogue_text": "~ start\nNarrator: You found something interesting!\nNarrator: This is a test dialogue event.\n=> END"
+}

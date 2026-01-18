@@ -22,10 +22,13 @@ TimeMgr="*res://scripts/autoload/TimeMgr.gd"
 LocationMgr="*res://scripts/autoload/LocationMgr.gd"
 CombatMgr="*res://scripts/autoload/CombatMgr.gd"
 StatusEffectMgr="*res://scripts/autoload/StatusEffectMgr.gd"
+#CombatMgr="*res://scripts/autoload/CombatMgr.gd"
+#StatusEffectMgr="*res://scripts/autoload/StatusEffectMgr.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/gut/plugin.cfg")
 
 [rendering]
 

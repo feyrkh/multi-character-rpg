@@ -1,8 +1,8 @@
 {
 	"display_name": "Slime Dungeon",
 	"is_discovered": true,
-	"potential_enemies": [
-		["res://data/enemies/slime.json", "res://data/enemies/slime.json"],
-		["res://data/enemies/slime.json"]
+	"potential_events": [
+		"res://data/events/combat/slime_double.json",
+		"res://data/events/combat/slime_single.json"
 	]
 }

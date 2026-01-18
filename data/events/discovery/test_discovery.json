@@ -1,0 +1,7 @@
+{
+	"event_type": "discovery",
+	"event_id": "test_discovery",
+	"locations": ["World Map\\Small Village"],
+	"show_message": true,
+	"message_text": "You discovered the Small Village!"
+}

@@ -1,0 +1,11 @@
+{
+	"event_type": "discovery",
+	"event_id": "unlock_forest_paths",
+	"locations": [
+		"World Map\\Dark Forest",
+		"World Map\\Forest Shrine",
+		"World Map\\Woodcutter's Camp"
+	],
+	"show_message": true,
+	"message_text": "You discovered hidden paths through the forest! Three new locations are now accessible."
+}

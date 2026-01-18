@@ -1,0 +1,63 @@
+{
+	"event_type": "composite",
+	"event_id": "bandit_ambush_complete",
+	"branch_mode": "branching",
+	"steps": [
+		{
+			"step_id": 0,
+			"event_type": "dialogue",
+			"dialogue_text": "Bandit Leader: Well, well... what do we have here?\nBandit Leader: Hand over your gold, and we'll let you live!",
+			"left_portrait": "res://assets/portraits/bandit_leader.png",
+			"background_image": "res://assets/backgrounds/forest_road.png"
+		},
+		{
+			"step_id": 1,
+			"event_type": "combat",
+			"enemies": [
+				"res://data/enemies/bandit.json",
+				"res://data/enemies/bandit.json",
+				"res://data/enemies/bandit_leader.json"
+			],
+			"next_step": {
+				"branches": [
+					{
+						"condition": "step_1.combat_result == 0",
+						"goto_step": 2
+					},
+					{
+						"condition": "step_1.combat_result == 1",
+						"goto_step": 4
+					},
+					{
+						"condition": "step_1.combat_result == 2",
+						"goto_step": 5
+					}
+				],
+				"default": 2
+			}
+		},
+		{
+			"step_id": 2,
+			"event_type": "dialogue",
+			"dialogue_text": "Narrator: You defeated the bandits!\nNarrator: Among their belongings, you find a crude map...",
+			"central_overlay": "res://assets/overlays/treasure_map.png",
+			"next_step": 3
+		},
+		{
+			"step_id": 3,
+			"event_type": "discovery",
+			"locations": ["World Map\\Bandit Hideout"],
+			"message_text": "The map reveals the location of the bandits' main hideout!"
+		},
+		{
+			"step_id": 4,
+			"event_type": "dialogue",
+			"dialogue_text": "Narrator: Defeat... The bandits overpower you and take your valuables.\nNarrator: You wake up later on the roadside, bruised but alive."
+		},
+		{
+			"step_id": 5,
+			"event_type": "dialogue",
+			"dialogue_text": "Narrator: You managed to escape the bandits!\nNarrator: Better to live and fight another day..."
+		}
+	]
+}

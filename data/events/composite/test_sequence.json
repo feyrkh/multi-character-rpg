@@ -1,0 +1,18 @@
+{
+	"event_type": "composite",
+	"event_id": "test_sequence",
+	"steps": [
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "~ start\nNarrator: A slime appears!\n=> END"
+		},
+		{
+			"event_type": "combat",
+			"enemies": ["res://data/enemies/slime.json"]
+		},
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "~ start\nNarrator: Victory! The slime was defeated.\n=> END"
+		}
+	]
+}

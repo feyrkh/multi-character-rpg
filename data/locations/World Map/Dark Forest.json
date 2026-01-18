@@ -1,0 +1,11 @@
+{
+	"display_name": "Dark Forest",
+	"is_discovered": false,
+	"position": {
+		"x": -200.0,
+		"y": 100.0
+	},
+	"potential_events": [
+		"res://data/events/combat/goblin_ambush.json"
+	]
+}

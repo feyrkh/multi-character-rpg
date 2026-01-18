@@ -1,0 +1,57 @@
+{
+	"event_type": "composite",
+	"event_id": "test_combat_branching",
+	"branch_mode": "branching",
+	"steps": [
+		{
+			"step_id": 0,
+			"event_type": "dialogue",
+			"dialogue_text": "Bandits: Hand over your valuables or fight!"
+		},
+		{
+			"step_id": 1,
+			"event_type": "combat",
+			"enemies": [
+				"res://data/enemies/bandit.json"
+			],
+			"next_step": {
+				"branches": [
+					{
+						"condition": "step_1.combat_result == 0",
+						"goto_step": 2
+					},
+					{
+						"condition": "step_1.combat_result == 1",
+						"goto_step": 4
+					},
+					{
+						"condition": "step_1.combat_result == 2",
+						"goto_step": 5
+					}
+				]
+			}
+		},
+		{
+			"step_id": 2,
+			"event_type": "dialogue",
+			"dialogue_text": "Victory! You defeated the bandits and found treasure.",
+			"next_step": 3
+		},
+		{
+			"step_id": 3,
+			"event_type": "discovery",
+			"locations": ["World Map\\Bandit Camp"],
+			"message_text": "You found a map to the bandits' hideout!"
+		},
+		{
+			"step_id": 4,
+			"event_type": "dialogue",
+			"dialogue_text": "Defeat... The bandits take your gold and flee."
+		},
+		{
+			"step_id": 5,
+			"event_type": "dialogue",
+			"dialogue_text": "You managed to escape the bandits."
+		}
+	]
+}

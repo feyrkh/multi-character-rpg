@@ -1,0 +1,7 @@
+{
+	"event_type": "dialogue",
+	"event_id": "ancient_artifact",
+	"dialogue_text": "~ start\nNarrator: You discover an ancient pedestal with a glowing crystal.\nNarrator: Strange runes pulse with an otherworldly light.\nNarrator: Do you dare touch it?\n- Take the crystal\n\tNarrator: As your fingers close around the crystal, power surges through you!\n\tNarrator: You feel... changed.\n\t=> END\n- Leave it alone\n\tNarrator: Perhaps some mysteries are best left undisturbed.\n\tNarrator: You step away from the pedestal.\n\t=> END\n- Examine the runes\n\tNarrator: The runes seem to tell a story of a forgotten civilization.\n\tNarrator: You commit the symbols to memory before moving on.\n\t=> END",
+	"central_overlay": "res://assets/overlays/glowing_crystal.png",
+	"background_image": "res://assets/backgrounds/ancient_ruins.png"
+}

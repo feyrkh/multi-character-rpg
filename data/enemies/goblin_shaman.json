@@ -1,0 +1,36 @@
+{
+	"enemy_name": "Goblin Shaman",
+	"hp": 60,
+	"max_hp": 60,
+	"attack": 12,
+	"defense": 5,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Dark magic assault",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Shadow Bolt"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Shadow Bolt"},
+				{"action_type": 0, "target_type": 0, "power": 15, "description": "Dark Curse"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Protective wards",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Magic Ward"},
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Magic Ward"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Shadow Bolt"}
+			]
+		},
+		{
+			"form_name": "Hexing",
+			"description": "Weakening curses",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Hex"},
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Hex"},
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Hex"}
+			]
+		}
+	]
+}

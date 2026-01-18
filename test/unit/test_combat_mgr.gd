@@ -86,15 +86,18 @@ func test_select_form():
 	var form = CombatForm.new("Test Form")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 10))
 
-	CombatMgr.select_form(form)
-	assert_eq(CombatMgr.selected_form, form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	var result = CombatMgr.select_form_for_combatant(combatant_id, form)
+	assert_true(result)
+	assert_eq(CombatMgr.party_combatants[0].selected_form, form)
 
 func test_select_form_wrong_state():
 	var form = CombatForm.new("Test Form")
-	# Not in combat, should not work
-	CombatMgr.select_form(form)
+	var test_combatant_id = "test_char_fake"
+	# Not in combat, should not work with new API
+	var result = CombatMgr.select_form_for_combatant(test_combatant_id, form)
+	assert_false(result, "Form selection should fail when not in combat")
 	assert_push_error("Cannot select form in current state")
-	assert_null(CombatMgr.selected_form)
 
 # --- Turn Execution Tests ---
 
@@ -105,7 +108,8 @@ func test_execute_turn():
 
 	var form = CombatForm.new("Attack Form")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 10))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 
 	await CombatMgr.execute_turn()
 	assert_eq(CombatMgr.current_turn, 1)
@@ -120,7 +124,8 @@ func test_execute_turn_deals_damage():
 
 	var form = CombatForm.new("Attack Form")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 10))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	await CombatMgr.execute_turn()
 
 	assert_lt(CombatMgr.enemy_hp, initial_enemy_hp)
@@ -134,7 +139,8 @@ func test_execute_turn_enemy_attacks():
 
 	var form = CombatForm.new("Attack Form")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))  # Won't kill enemy
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	await CombatMgr.execute_turn()
 
 	# If combat continues, enemy should have attacked
@@ -150,7 +156,8 @@ func test_win_combat():
 
 	var form = CombatForm.new("Power Attack")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 20))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	await CombatMgr.execute_turn()
 
 	assert_false(CombatMgr.is_in_combat())
@@ -173,7 +180,8 @@ func test_flee_returns_report():
 	# Do some combat first
 	var form = CombatForm.new("Attack")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	await CombatMgr.execute_turn()
 
 	if CombatMgr.is_in_combat():
@@ -216,7 +224,8 @@ func test_get_current_turn():
 
 	var form = CombatForm.new("Attack")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	await CombatMgr.execute_turn()
 
 	if CombatMgr.is_in_combat():
@@ -247,8 +256,9 @@ func test_form_selected_signal():
 	var form = CombatForm.new("Test")
 	form.add_action(CombatAction.new())
 
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
 	watch_signals(CombatMgr)
-	CombatMgr.select_form(form)
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	assert_signal_emitted(CombatMgr, "form_selected")
 
 func test_turn_started_signal():
@@ -258,7 +268,8 @@ func test_turn_started_signal():
 
 	var form = CombatForm.new("Test")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 5))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 
 	watch_signals(CombatMgr)
 	CombatMgr.execute_turn()
@@ -286,7 +297,8 @@ func test_combat_adds_to_action_log():
 	CombatMgr.start_combat(party, enemy)
 	var form = CombatForm.new("Kill")
 	form.add_action(CombatAction.new(CombatAction.ActionType.ATTACK, 50))
-	CombatMgr.select_form(form)
+	var combatant_id = CombatMgr.party_combatants[0].combatant_id
+	CombatMgr.select_form_for_combatant(combatant_id, form)
 	await CombatMgr.execute_turn()
 
 	# Combat should have ended and added a log entry

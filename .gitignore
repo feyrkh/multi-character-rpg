@@ -3,3 +3,5 @@
 /android/
 
 nul
+
+.claude/settings.local.json

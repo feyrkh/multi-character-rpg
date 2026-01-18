@@ -1,0 +1,37 @@
+{
+	"event_type": "composite",
+	"event_id": "test_random_branching",
+	"branch_mode": "branching",
+	"steps": [
+		{
+			"step_id": 0,
+			"event_type": "dialogue",
+			"dialogue_text": "You find a mysterious chest in the corner!",
+			"next_step": {
+				"branches": [
+					{
+						"condition": "random() < 0.7",
+						"goto_step": 1
+					}
+				],
+				"default": 2
+			}
+		},
+		{
+			"step_id": 1,
+			"event_type": "dialogue",
+			"dialogue_text": "Lucky! It contains gold and jewels!"
+		},
+		{
+			"step_id": 2,
+			"event_type": "dialogue",
+			"dialogue_text": "It's trapped! A creature emerges from the chest!",
+			"next_step": 3
+		},
+		{
+			"step_id": 3,
+			"event_type": "combat",
+			"enemies": ["res://data/enemies/slime.json"]
+		}
+	]
+}

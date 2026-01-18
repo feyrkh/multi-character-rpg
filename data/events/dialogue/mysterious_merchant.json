@@ -1,0 +1,7 @@
+{
+	"event_type": "dialogue",
+	"event_id": "mysterious_merchant",
+	"dialogue_text": "~ start\nMerchant: Greetings, traveler! I have rare wares from distant lands.\nMerchant: Perhaps you'd like to see my collection?\n- Yes, show me your wares\n\tMerchant: Excellent! Though I warn you, my prices are... fair.\n\t=> END\n- No, thank you\n\tMerchant: Your loss. These opportunities don't come often.\n\t=> END",
+	"left_portrait": "res://assets/portraits/merchant.png",
+	"background_image": "res://assets/backgrounds/market.png"
+}

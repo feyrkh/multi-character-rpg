@@ -1,0 +1,36 @@
+{
+	"enemy_name": "Bandit Leader",
+	"hp": 85,
+	"max_hp": 85,
+	"attack": 16,
+	"defense": 6,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Brutal onslaught",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 16, "description": "Heavy Strike"},
+				{"action_type": 0, "target_type": 0, "power": 16, "description": "Heavy Strike"},
+				{"action_type": 0, "target_type": 0, "power": 20, "description": "Power Attack"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Tactical stance",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Block"},
+				{"action_type": 0, "target_type": 0, "power": 16, "description": "Heavy Strike"},
+				{"action_type": 0, "target_type": 0, "power": 16, "description": "Heavy Strike"}
+			]
+		},
+		{
+			"form_name": "Command",
+			"description": "Rally and strike",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Command Strike"},
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Command Strike"},
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Command Strike"}
+			]
+		}
+	]
+}

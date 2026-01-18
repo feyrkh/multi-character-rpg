@@ -4,6 +4,7 @@ extends Control
 
 signal clicked(location_id: String)
 signal enter_requested(location_id: String)
+signal explore_requested(location_id: String)
 
 var location_id: String = ""
 
@@ -11,11 +12,16 @@ var location_id: String = ""
 @onready var name_label: Label = $VBoxContainer/NameLabel
 @onready var exploration_label: Label = $VBoxContainer/ExplorationLabel
 @onready var character_icons: HBoxContainer = $VBoxContainer/CharacterIcons
-@onready var enter_button: Button = $VBoxContainer/EnterButton
+@onready var enter_button: Button = $VBoxContainer/EnterButton if has_node("VBoxContainer/EnterButton") else null
+@onready var explore_button: Button = $VBoxContainer/ExploreButton if has_node("VBoxContainer/ExploreButton") else null
 
 func _ready() -> void:
-	enter_button.pressed.connect(_on_enter_pressed)
-	enter_button.visible = false
+	if enter_button:
+		enter_button.pressed.connect(_on_enter_pressed)
+		enter_button.visible = false
+	if explore_button:
+		explore_button.pressed.connect(_on_explore_pressed)
+		explore_button.visible = false
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -46,8 +52,13 @@ func set_highlighted(highlighted: bool) -> void:
 	else:
 		icon_rect.color = Color(0.5, 0.5, 0.5, 1)  # Normal gray
 
-func set_current(is_current: bool, has_interior: bool = false) -> void:
-	enter_button.visible = is_current and has_interior
+func set_current(is_current: bool, has_interior: bool = false, has_events: bool = false, is_instant_travel: bool = false) -> void:
+	if enter_button:
+		enter_button.visible = is_current and has_interior
+	if explore_button:
+		# In instant-travel areas, show explore on all nodes with events
+		# In non-instant areas, only show on current location
+		explore_button.visible = has_events and (is_instant_travel or is_current)
 	if is_current:
 		icon_rect.color = Color(0.3, 0.6, 0.9, 1)  # Blue for current location
 	else:
@@ -67,3 +78,6 @@ func update_characters(characters: Array[PlayableCharacter]) -> void:
 
 func _on_enter_pressed() -> void:
 	enter_requested.emit(location_id)
+
+func _on_explore_pressed() -> void:
+	explore_requested.emit(location_id)

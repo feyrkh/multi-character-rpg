@@ -1,0 +1,47 @@
+{
+	"event_type": "composite",
+	"event_id": "test_dialogue_branching",
+	"branch_mode": "branching",
+	"steps": [
+		{
+			"step_id": 0,
+			"event_type": "dialogue",
+			"capture_choice": true,
+			"choice_variable": "merchant_response",
+			"dialogue_text": "Merchant: Welcome traveler! Would you like to trade?\n- Buy something [id=\"buy\"]\n- Haggle for discount [id=\"haggle\"]\n- Leave [id=\"leave\"]",
+			"next_step": {
+				"branches": [
+					{
+						"condition": "step_0.choice_id == 'buy'",
+						"goto_step": 1
+					},
+					{
+						"condition": "step_0.choice_id == 'haggle'",
+						"goto_step": 3
+					},
+					{
+						"condition": "step_0.choice_id == 'leave'",
+						"goto_step": -1
+					}
+				],
+				"default": 1
+			}
+		},
+		{
+			"step_id": 1,
+			"event_type": "dialogue",
+			"dialogue_text": "Merchant: That'll be 50 gold pieces!",
+			"next_step": 2
+		},
+		{
+			"step_id": 2,
+			"event_type": "dialogue",
+			"dialogue_text": "Merchant: Thank you for your business! Come again soon."
+		},
+		{
+			"step_id": 3,
+			"event_type": "dialogue",
+			"dialogue_text": "Merchant: Hmph! I don't haggle with strangers!"
+		}
+	]
+}

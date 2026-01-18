@@ -4,5 +4,9 @@
 	"position": {
 		"x": 202.0,
 		"y": 38.0
-	}
+	},
+	"potential_events": [
+		"res://data/events/composite/mysterious_shrine.json",
+		"res://data/events/combat/boss_slime_king.json"
+	]
 }

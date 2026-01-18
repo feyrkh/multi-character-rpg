@@ -1,0 +1,8 @@
+{
+	"event_type": "discovery",
+	"event_id": "silent_unlock",
+	"locations": [
+		"World Map\\Secret Passage"
+	],
+	"show_message": false
+}

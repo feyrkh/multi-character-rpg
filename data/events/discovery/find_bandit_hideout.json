@@ -1,0 +1,9 @@
+{
+	"event_type": "discovery",
+	"event_id": "find_bandit_hideout",
+	"locations": [
+		"World Map\\Bandit Hideout"
+	],
+	"show_message": true,
+	"message_text": "You found the bandits' hidden lair! A crude map reveals its location in the mountains."
+}

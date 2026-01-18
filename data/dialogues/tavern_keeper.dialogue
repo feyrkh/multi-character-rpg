@@ -1,0 +1,38 @@
+~ greeting
+
+Tavern Keeper: Welcome to the Silver Stag Inn!
+Tavern Keeper: What can I do for you?
+
+- Ask about rooms
+	Tavern Keeper: A room for the night costs 10 gold pieces.
+	Tavern Keeper: Interested?
+	=> ask_about_room
+- Ask about rumors
+	=> rumors
+- Leave
+	Tavern Keeper: Safe travels!
+	=> END
+
+~ ask_about_room
+
+- Rent a room (10 gold)
+	Tavern Keeper: Excellent! Up the stairs, second door on the left.
+	Tavern Keeper: Sleep well, friend.
+	=> END
+- Just browsing
+	Tavern Keeper: Well, let me know if you change your mind.
+	=> greeting
+
+~ rumors
+
+Tavern Keeper: Rumors, eh? Let's see...
+Tavern Keeper: They say the old Slime Dungeon is crawling with monsters.
+Tavern Keeper: And some fool claims to have seen lights in the abandoned tower.
+
+- Ask about work
+	Tavern Keeper: Work? Try the notice board outside.
+	Tavern Keeper: Lots of folk need help these days.
+	=> greeting
+- That's enough
+	Tavern Keeper: Anything else?
+	=> greeting

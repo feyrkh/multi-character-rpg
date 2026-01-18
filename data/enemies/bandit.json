@@ -1,0 +1,27 @@
+{
+	"enemy_name": "Bandit",
+	"hp": 55,
+	"max_hp": 55,
+	"attack": 12,
+	"defense": 4,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Relentless assault",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Slash"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Slash"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Slash"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Calculated approach",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Parry"},
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Parry"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Slash"}
+			]
+		}
+	]
+}

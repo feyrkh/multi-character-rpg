@@ -1,0 +1,36 @@
+{
+	"enemy_name": "Spirit Guardian",
+	"hp": 100,
+	"max_hp": 100,
+	"attack": 15,
+	"defense": 10,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Ethereal assault",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 15, "description": "Spirit Strike"},
+				{"action_type": 0, "target_type": 0, "power": 15, "description": "Spirit Strike"},
+				{"action_type": 0, "target_type": 0, "power": 15, "description": "Spirit Strike"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Spectral ward",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Ward"},
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Ward"},
+				{"action_type": 0, "target_type": 0, "power": 15, "description": "Spirit Strike"}
+			]
+		},
+		{
+			"form_name": "Mystical",
+			"description": "Ancient power",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Mystic Bolt"},
+				{"action_type": 0, "target_type": 0, "power": 12, "description": "Mystic Bolt"},
+				{"action_type": 0, "target_type": 0, "power": 22, "description": "Ancient Blast"}
+			]
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"event_type": "dialogue",
+	"event_id": "guard_checkpoint",
+	"dialogue_text": "~ start\nGuard: Halt! State your business in these lands.\n- I'm just passing through\n\tGuard: Very well. Watch yourself - bandits have been spotted nearby.\n\tGuard: Safe travels, stranger.\n\t=> END\n- I'm looking for work\n\tGuard: Hmm. Speak to the Captain at the barracks if you're serious.\n\tGuard: We can always use capable fighters.\n\t=> END\n- That's none of your concern\n\tGuard: Watch your tone! I have half a mind to turn you away.\n\tGuard: ...Fine. Move along, but don't cause trouble.\n\t=> END",
+	"right_portrait": "res://assets/portraits/guard.png"
+}

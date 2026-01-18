@@ -1,0 +1,11 @@
+{
+	"display_name": "Woodcutter's Camp",
+	"is_discovered": false,
+	"position": {
+		"x": -150.0,
+		"y": -100.0
+	},
+	"potential_events": [
+		"res://data/events/dialogue/mysterious_merchant.json"
+	]
+}

@@ -1,0 +1,36 @@
+{
+	"enemy_name": "Slime King",
+	"hp": 150,
+	"max_hp": 150,
+	"attack": 14,
+	"defense": 8,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Overwhelming force",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Slam"},
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Slam"},
+				{"action_type": 0, "target_type": 0, "power": 18, "description": "Mega Slam"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Hardened shell",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Harden"},
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Harden"},
+				{"action_type": 0, "target_type": 0, "power": 14, "description": "Slam"}
+			]
+		},
+		{
+			"form_name": "Enraged",
+			"description": "Desperate fury",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 20, "description": "Fury Strike"},
+				{"action_type": 0, "target_type": 0, "power": 20, "description": "Fury Strike"},
+				{"action_type": 0, "target_type": 0, "power": 20, "description": "Fury Strike"}
+			]
+		}
+	]
+}

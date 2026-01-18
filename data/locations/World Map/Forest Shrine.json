@@ -1,0 +1,11 @@
+{
+	"display_name": "Forest Shrine",
+	"is_discovered": false,
+	"position": {
+		"x": -250.0,
+		"y": -50.0
+	},
+	"potential_events": [
+		"res://data/events/composite/mysterious_shrine.json"
+	]
+}

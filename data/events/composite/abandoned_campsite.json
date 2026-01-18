@@ -1,0 +1,21 @@
+{
+	"event_type": "composite",
+	"event_id": "abandoned_campsite",
+	"steps": [
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Narrator: You stumble upon an abandoned campsite.\nNarrator: The fire is still warm - someone was here recently.\nNarrator: You find a rucksack with supplies and a hastily scribbled note.",
+			"background_image": "res://assets/backgrounds/forest_campsite.png"
+		},
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Narrator: The note reads: 'If anyone finds this - BEWARE!'\nNarrator: 'Slimes in the dungeon aren't normal. Something's wrong.'\nNarrator: 'Heading back to warn the village. - Marcus'",
+			"central_overlay": "res://assets/overlays/note_paper.png"
+		},
+		{
+			"event_type": "discovery",
+			"locations": ["World Map\\Slime Dungeon"],
+			"show_message": false
+		}
+	]
+}

@@ -4,5 +4,9 @@
 	"position": {
 		"x": 201.0,
 		"y": -131.0
-	}
+	},
+	"potential_events": [
+		"res://data/events/composite/abandoned_campsite.json",
+		"res://data/events/dialogue/ancient_artifact.json"
+	]
 }

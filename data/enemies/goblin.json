@@ -1,0 +1,27 @@
+{
+	"enemy_name": "Goblin",
+	"hp": 35,
+	"max_hp": 35,
+	"attack": 10,
+	"defense": 2,
+	"combat_forms": [
+		{
+			"form_name": "Aggressive",
+			"description": "Quick strikes",
+			"actions": [
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Strike"},
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Strike"},
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Strike"}
+			]
+		},
+		{
+			"form_name": "Defensive",
+			"description": "Guard up",
+			"actions": [
+				{"action_type": 1, "target_type": 1, "power": 0, "description": "Guard"},
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Strike"},
+				{"action_type": 0, "target_type": 0, "power": 10, "description": "Strike"}
+			]
+		}
+	]
+}

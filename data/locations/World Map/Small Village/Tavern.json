@@ -1,5 +1,8 @@
 {
 	"display_name": "Tavern",
 	"position": {"x": 100, "y": 0},
-	"is_discovered": true
+	"is_discovered": true,
+	"potential_events": [
+		"res://data/events/dialogue/tavern_conversation.json"
+	]
 }

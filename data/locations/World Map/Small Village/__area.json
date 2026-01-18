@@ -1,0 +1,11 @@
+{
+	"display_name": "Small Village",
+	"is_discovered": true,
+	"potential_events": [
+		"res://data/events/dialogue/guard_checkpoint.json",
+		"res://data/events/dialogue/mysterious_merchant.json",
+		"res://data/events/composite/test_dialogue_branching.json",
+		"res://data/events/composite/test_combat_branching.json",
+		"res://data/events/composite/test_random_branching.json"
+	]
+}

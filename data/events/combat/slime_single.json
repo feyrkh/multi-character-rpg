@@ -1,0 +1,7 @@
+{
+	"event_type": "combat",
+	"event_id": "slime_single",
+	"enemies": [
+		"res://data/enemies/slime.json"
+	]
+}

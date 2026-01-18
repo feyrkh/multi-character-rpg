@@ -117,9 +117,9 @@ func _try_load_area_location(area_id: String) -> Location:
 						loc.display_name = data.display_name
 					if data.has("is_discovered"):
 						loc.is_discovered = data.is_discovered
-					if data.has("potential_enemies"):
-						for enemy_path in data.potential_enemies:
-							loc.potential_enemies.append(enemy_path)
+					if data.has("potential_events"):
+						for event_path in data.potential_events:
+							loc.potential_events.append(event_path)
 				file.close()
 
 	# Register location
@@ -164,6 +164,11 @@ func _try_load_location_from_file(location_id: String) -> Location:
 		loc.icon_path = data.get("icon_path")
 	if data.has("background_path"):
 		loc.background_path = data.get("background_path")
+
+	# Load events
+	if data.has("potential_events"):
+		for event_path in data.potential_events:
+			loc.potential_events.append(event_path)
 
 	# Register and ensure links are loaded
 	register_location(loc)

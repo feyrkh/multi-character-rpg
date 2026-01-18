@@ -1,0 +1,38 @@
+{
+	"event_type": "composite",
+	"event_id": "mysterious_shrine",
+	"steps": [
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Narrator: You discover an ancient shrine covered in moss.\nNarrator: Strange symbols glow faintly in the dim light.\nNarrator: As you approach, the air grows cold...",
+			"background_image": "res://assets/backgrounds/ancient_shrine.png",
+			"central_overlay": "res://assets/overlays/glowing_runes.png"
+		},
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Spirit Guardian: Who dares disturb this sacred place?\nSpirit Guardian: Prove your worth, mortal!",
+			"left_portrait": "res://assets/portraits/spirit_guardian.png",
+			"background_image": "res://assets/backgrounds/ancient_shrine.png"
+		},
+		{
+			"event_type": "combat",
+			"enemies": [
+				"res://data/enemies/spirit_guardian.json"
+			]
+		},
+		{
+			"event_type": "dialogue",
+			"dialogue_text": "Spirit Guardian: Impressive... You have proven yourself worthy.\nSpirit Guardian: The shrine's secrets are yours to discover.\nSpirit Guardian: May you use this knowledge wisely...",
+			"left_portrait": "res://assets/portraits/spirit_guardian_calm.png",
+			"background_image": "res://assets/backgrounds/ancient_shrine.png"
+		},
+		{
+			"event_type": "discovery",
+			"locations": [
+				"World Map\\Hidden Temple",
+				"World Map\\Spirit Realm Gateway"
+			],
+			"message_text": "The shrine reveals passages to two hidden sacred locations!"
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+	"event_type": "dialogue",
+	"event_id": "tavern_conversation",
+	"dialogue_file": "res://data/dialogues/tavern_keeper.dialogue",
+	"dialogue_title": "greeting",
+	"right_portrait": "res://assets/portraits/tavern_keeper.png",
+	"background_image": "res://assets/backgrounds/tavern_interior.png"
+}

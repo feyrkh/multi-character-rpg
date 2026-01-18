@@ -12,10 +12,8 @@ var background_path: String = ""
 var is_discovered: bool = false
 var position: Vector2 = Vector2.ZERO  # Position on map for rendering
 var is_instant_travel: bool = true  # If false, must walk between nodes
-# Potential enemy encounters. Can be:
-# - Array of Strings: ["enemy1.json", "enemy2.json"] (backward compat - each is separate encounter)
-# - Array of Arrays: [["enemy1.json", "enemy2.json"], ["enemy3.json"]] (multi-enemy encounters)
-var potential_enemies: Array = []
+# Potential event encounters (combat, dialogue, discovery, composite)
+var potential_events: Array[String] = []  # Paths to event JSON files
 
 func _init(p_id: String = "", p_name: String = "") -> void:
 	id = p_id
@@ -105,8 +103,8 @@ func to_dict() -> Dictionary:
 		"position": {"x": position.x, "y": position.y},
 		"is_instant_travel": is_instant_travel
 	}
-	if potential_enemies.size() > 0:
-		result["potential_enemies"] = Array(potential_enemies)
+	if potential_events.size() > 0:
+		result["potential_events"] = Array(potential_events)
 	return result
 
 static func from_dict(dict: Dictionary) -> Location:
@@ -120,9 +118,13 @@ static func from_dict(dict: Dictionary) -> Location:
 	var pos_data = dict.get("position", {})
 	loc.position = Vector2(pos_data.get("x", 0), pos_data.get("y", 0))
 	loc.is_instant_travel = dict.get("is_instant_travel", true)
-	var enemies_data = dict.get("potential_enemies", [])
-	for enemy_path in enemies_data:
-		loc.potential_enemies.append(enemy_path)
+
+	# Load events
+	if dict.has("potential_events"):
+		var events_data = dict.get("potential_events", [])
+		for event_path in events_data:
+			loc.potential_events.append(event_path)
+
 	return loc
 
 func get_save_data() -> Dictionary:

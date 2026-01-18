@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cyjjky1axyn4k"
+path="res://.godot/imported/tavern_keeper.dialogue-582479fad1403a5c64bc05661cbd8105.tres"
+
+[deps]
+
+source_file="res://data/dialogues/tavern_keeper.dialogue"
+dest_files=["res://.godot/imported/tavern_keeper.dialogue-582479fad1403a5c64bc05661cbd8105.tres"]
+
+[params]
+
+defaults=true
